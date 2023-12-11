@@ -1,12 +1,28 @@
-import React from 'react'
+import { useState } from 'react'
 
-const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
+import Mensaje from './Mensaje'
 
-  // console.log(props)
+const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
+
+  const [mensaje, setMensaje] = useState('')
+
+  const handlePresupuesto = e => {
+    e.preDefault();
+    // console.log('Enviado Formulario')
+
+    if (!Number(presupuesto) || Number(presupuesto) < 0) {
+      setMensaje('No es un presupuesto valido')
+      return;
+    }
+    setMensaje('')
+  }
+
   return (
     <div className='contenedor-presupuesto contenedor sombra'>
-
-      <form className="formulario">
+      <form
+        onSubmit={handlePresupuesto}
+        className="formulario"
+      >
         <div className="campo">
           <label>Definir Presupuesto</label>
           <input
@@ -22,6 +38,8 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
           type="submit"
           value="Añadir"
         />
+
+        {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
       </form>
 
