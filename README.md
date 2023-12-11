@@ -1,8 +1,5 @@
-# React + Vite
+Proyecto de Crontrol de Gastos 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+=> Css NO usaremos Frameworks (Pero debemo instalar Normalize.css, para este proyecto)
+=> Incorporamos fuentes desde google fonts (lato)
+=> El index.css que esta en el proyecto, queda de manera global en todo el proyecto
