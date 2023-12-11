@@ -1,10 +1,14 @@
 import NuevoPresupuesto from "./NuevoPresupuesto"
 
-const Header = () => {
+const Header = ({ presupuesto, setPresupuesto }) => {
+
   return (
     <header>
       <h1>Planifiador de gastos</h1>
-      <NuevoPresupuesto />
+      <NuevoPresupuesto
+        presupuesto={presupuesto}
+        setPresupuesto={setPresupuesto}
+      />
     </header>
   )
 }
