@@ -4,7 +4,11 @@ import CerrarModal from '../img/cerrar.svg'
 
 const Modal = ({ setModal, animarModal, setAnimarModal }) => {
 
-  const CATEGORIAS = [
+  const [nombre, setNombre] = useState('')
+  const [cantidad, setCantidad] = useState('')
+  const [categoria, setCategoria] = useState('')
+
+  const arrayCategorias = [
     'ahorro',
     'comida',
     'casa',
@@ -22,6 +26,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
     }, 500);
 
   }
+
+
 
   return (
     <div className='modal'>
@@ -43,6 +49,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
             id='nombre'
             type="text"
             placeholder='Ingresa el nombre del gasto'
+            value={nombre}
+            onChange={e => setNombre(e.target.value)}
           />
 
         </div>
@@ -53,6 +61,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
             id='cantidad'
             type="number"
             placeholder='Ingresa la cantidad: Ej. 300'
+            value={cantidad}
+            onChange={e => setCantidad(Number(e.target.value))}
           />
 
         </div>
@@ -60,9 +70,13 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
         <div className="campo">
           <label htmlFor="categoria">Categoria</label>
 
-          <select id="categoria">
+          <select
+            id="categoria"
+            value={categoria}
+            onChange={e => setCategoria(e.target.value)}
+          >
             <option value="">- seleccione -</option>
-            {CATEGORIAS.map(categoria => (
+            {arrayCategorias.map(categoria => (
               <option
                 key={categoria}
                 value={categoria}
