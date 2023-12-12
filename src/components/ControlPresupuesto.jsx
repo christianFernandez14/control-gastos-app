@@ -7,6 +7,7 @@ import { formatearCantidad } from "../helpers";
 
 const ControlPresupuesto = ({ gastos, presupuesto }) => {
 
+  const [porcentaje, setPorcentaje] = useState(30)
   const [disponible, setDisponible] = useState(0)
   const [gastado, setGastado] = useState(0)
 
@@ -15,18 +16,28 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
     const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0)
     const totalDiponible = presupuesto - totalGastado
 
+    // Calulando el porcentaje:
+
+    const nuevoPorcentaje = (((presupuesto - totalDiponible) / presupuesto) * 100).toFixed(2)
+
     setDisponible(totalDiponible)
     setGastado(totalGastado)
+    
+    setTimeout(() => {
+      setPorcentaje(nuevoPorcentaje)
+
+    }, 1500);
 
   }, [gastos])
-  
+
 
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
-        <CircularProgressbar 
-        
-        
+        <CircularProgressbar
+          value={porcentaje}
+          text={`${porcentaje}% Gastado`}
+
         />
       </div>
 
