@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import Mensaje from './Mensaje'
 
 import CerrarModal from '../img/cerrar.svg'
 
-const Modal = ({ setModal, animarModal, setAnimarModal }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGastos }) => {
 
   const [nombre, setNombre] = useState('')
   const [cantidad, setCantidad] = useState('')
   const [categoria, setCategoria] = useState('')
+  const [mensaje, setMensaje] = useState('')
 
   const arrayCategorias = [
     'ahorro',
@@ -27,7 +29,21 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
 
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
 
+    if ([nombre, cantidad, categoria].includes('')) {
+      setMensaje('Todos los campos son requeridos')
+
+      setTimeout(() => {
+        setMensaje('')        
+      }, 1500);
+
+      return
+    }
+
+    guardarGastos({nombre, cantidad, categoria})
+  }
 
   return (
     <div className='modal'>
@@ -39,9 +55,15 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
         />
       </div>
 
-      <form className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}>
+      
+      <form
+        onSubmit={handleSubmit}
+        className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}
+      >
 
         <legend>Nuevo Gasto</legend>
+
+        {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
         <div className="campo">
           <label htmlFor="nombre">Nombre Gasto</label>
@@ -68,7 +90,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
         </div>
 
         <div className="campo">
-          <label htmlFor="categoria">Categoria</label>
+          <label htmlFor="categoria">Categoría</label>
 
           <select
             id="categoria"
