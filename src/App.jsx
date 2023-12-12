@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 import Header from './components/Header'
 
@@ -9,13 +10,25 @@ function App() {
 
   return (
     <div>
+
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
-        isValidPresupuesto= {isValidPresupuesto}
-        setIsValidPresupuesto = {setIsValidPresupuesto}
+        isValidPresupuesto={isValidPresupuesto}
+        setIsValidPresupuesto={setIsValidPresupuesto}
       />
-    </div>
+
+      {isValidPresupuesto && (
+        <div className="nuevo-gasto">
+          <img
+            src={IconoNuevoGasto}
+            alt="icono de nuevo gasto"
+          />
+        </div>
+      )}
+      
+  </div>
+      
   )
 }
 
