@@ -129,6 +129,7 @@ header h1 {
     border-radius: 1rem;
     text-align: center;
     background-color: var(--gris-claro);
+    text-transform: capitalize;
 }
 
 .alerta {
