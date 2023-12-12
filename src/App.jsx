@@ -38,10 +38,21 @@ function App() {
   }
 
   const guardarGasto = gasto => {
-    gasto.id = generarId()
-    gasto.fecha = Date.now()
-    setGastos([...gastos, gasto])
+    console.log(gasto)
 
+    if (gasto.id) {
+      // Gasto Actualizar
+      const gastoActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+      console.log(gastoActualizados)
+      setGastos(gastoActualizados)
+
+    } else {
+      // Gasto nuevos
+      gasto.id = generarId()
+      gasto.fecha = Date.now()
+      setGastos([...gastos, gasto])
+
+    }
     setAnimarModal(false)
     setTimeout(() => {
       setModal(false)
@@ -84,7 +95,6 @@ function App() {
         setAnimarModal={setAnimarModal}
         guardarGasto={guardarGasto}
         gastoEditar={gastoEditar}
-        setGastoEditar={setGastoEditar}
       />}
 
     </div>
