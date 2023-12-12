@@ -1,14 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Mensaje from './Mensaje'
 
 import CerrarModal from '../img/cerrar.svg'
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+const Modal = ({
+  setModal,
+  animarModal,
+  setAnimarModal,
+  guardarGasto,
+  gastoEditar,
+  setGastoEditar
+}) => {
 
   const [nombre, setNombre] = useState('')
   const [cantidad, setCantidad] = useState('')
   const [categoria, setCategoria] = useState('')
   const [mensaje, setMensaje] = useState('')
+
+  useEffect(() => {
+    if (Object.keys(gastoEditar).length > 0) {
+      setNombre(gastoEditar.nombre)
+      setCantidad(gastoEditar.cantidad)
+      setCategoria(gastoEditar.categoria)
+    }
+  }, [])
 
   const arrayCategorias = [
     'ahorro',
@@ -21,6 +36,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
 
   const ocultarModal = () => {
     setAnimarModal(false)
+    // Lo agregue para doble segurida que quede fuera del state
+    setGastoEditar({})
 
     setTimeout(() => {
       setModal(false)
@@ -36,13 +53,13 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
       setMensaje('Todos los campos son requeridos')
 
       setTimeout(() => {
-        setMensaje('')        
+        setMensaje('')
       }, 1500);
 
       return
     }
 
-    guardarGasto({nombre, cantidad, categoria})
+    guardarGasto({ nombre, cantidad, categoria })
   }
 
   return (
@@ -55,7 +72,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
         />
       </div>
 
-      
+
       <form
         onSubmit={handleSubmit}
         className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}

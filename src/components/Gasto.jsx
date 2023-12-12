@@ -63,7 +63,7 @@ const Gasto = ({ gasto, setGastoEditar }) => {
           <div className='contenido-gasto'>
             <img
               src={diccionarioIconos[categoria]}
-              alt={`Imagen del gasto ${categoria}`}
+              alt={`Imagen de ${categoria}`}
             />
             <div className="descripcion-gasto">
               <p className="categoria">{categoria}</p>
