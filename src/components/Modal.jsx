@@ -3,7 +3,7 @@ import Mensaje from './Mensaje'
 
 import CerrarModal from '../img/cerrar.svg'
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGastos }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
 
   const [nombre, setNombre] = useState('')
   const [cantidad, setCantidad] = useState('')
@@ -42,7 +42,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGastos }) => {
       return
     }
 
-    guardarGastos({nombre, cantidad, categoria})
+    guardarGasto({nombre, cantidad, categoria})
   }
 
   return (
