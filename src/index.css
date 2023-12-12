@@ -196,6 +196,7 @@ header h1 {
     width: 100%;
 }
 .contenido-presupuesto p {
+    margin-top: 2rem;
     font-weight: 400;
     color: var(--gris-oscuro);
     font-size: 2.4rem;
