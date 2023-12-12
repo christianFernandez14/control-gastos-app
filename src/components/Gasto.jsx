@@ -29,7 +29,7 @@ const diccionarioIconos = {
   suscripciones: IconoSuscripciones
 }
 
-const Gasto = ({ gasto, setGastoEditar }) => {
+const Gasto = ({ gasto, setGastoEditar, eliminarGastos }) => {
   const { categoria, nombre, cantidad, id, fecha } = gasto;
 
 // Efecto Swipe
@@ -45,7 +45,7 @@ const Gasto = ({ gasto, setGastoEditar }) => {
     <TrailingActions>
       <SwipeAction
         destructive={true}
-        onClick={() => console.info('Eliminado')}
+        onClick={() => eliminarGastos(id)}
       >
         Eliminar
       </SwipeAction>
@@ -69,7 +69,7 @@ const Gasto = ({ gasto, setGastoEditar }) => {
               <p className="categoria">{categoria}</p>
               <p className="nombre-gasto">{nombre}</p>
               <p className='fecha-gasto'>
-                Agredado: {' '}
+                Agredado el: {' '}
                 <span>{formatarFecha(fecha)}</span>
               </p>
             </div>

@@ -32,7 +32,7 @@ const Modal = ({
     'ahorro',
     'comida',
     'casa',
-    'gastos Varios',
+    'gastos',
     'oscio',
     'salud',
     'suscripciones']
