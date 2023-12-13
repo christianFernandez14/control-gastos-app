@@ -102,6 +102,7 @@ function App() {
 
       <Header
         gastos={gastos}
+        setGastos= {setGastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}

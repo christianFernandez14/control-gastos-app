@@ -5,7 +5,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import { formatearCantidad } from "../helpers";
 
-const ControlPresupuesto = ({ gastos, presupuesto }) => {
+const ControlPresupuesto = ({ 
+  gastos, 
+  setGastos, 
+  presupuesto, 
+  setPresupuesto,
+  setIsValidPresupuesto 
+}) => {
 
   const [porcentaje, setPorcentaje] = useState(0)
   const [disponible, setDisponible] = useState(0)
@@ -17,12 +23,11 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
     const totalDiponible = presupuesto - totalGastado
 
     // Calulando el porcentaje:
-
     const nuevoPorcentaje = (((presupuesto - totalDiponible) / presupuesto) * 100).toFixed(2)
 
-    setDisponible(totalDiponible) 
+    setDisponible(totalDiponible)
     setGastado(totalGastado)
-    
+
     setTimeout(() => {
       setPorcentaje(nuevoPorcentaje)
 
@@ -31,15 +36,27 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
   }, [gastos])
 
 
+  const handleRestApp = () => {
+    
+    const resultado = confirm('¿Esta seguro de Resetear App?')
+    if (resultado){
+      // console.log('Resenteando App')
+      setGastos([])
+      setPresupuesto(0)
+      setIsValidPresupuesto(false)
+    }
+   }
+
+
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
         <CircularProgressbar
-        styles={buildStyles({
-          pathColor: porcentaje > 100 ? '#dc2626': '#3b82f6',
-          textColor: porcentaje > 100 ? '#dc2626': '#3b82f6',
-          trailColor: '#f5f5f5'
-        })}
+          styles={buildStyles({
+            pathColor: porcentaje > 100 ? '#dc2626' : '#3b82f6',
+            textColor: porcentaje > 100 ? '#dc2626' : '#3b82f6',
+            trailColor: '#f5f5f5'
+          })}
           value={porcentaje}
           text={`${porcentaje}% Gastado`}
 
@@ -47,6 +64,13 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
       </div>
 
       <div className="contenido-presupuesto">
+        <button
+          className="reset-app"
+          type="button"
+          onClick={handleRestApp}
+        >
+          Resetear App
+        </button>
         <p>
           <span>Presupuesto: </span> {formatearCantidad(presupuesto)}
         </p>

@@ -9,8 +9,6 @@ const ListadoGastos = ({
   gastosFiltrados
 }) => {
 
-  console.log(filtro)
-
   return (
     <div className='listado-gastos contenedor'>
       {
