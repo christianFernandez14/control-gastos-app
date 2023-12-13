@@ -49,8 +49,6 @@ function App() {
     if (filtro) {
       // Ahora filtramos por categoria
       const gastosfiltrados = gastos.filter(gasto => gasto.categoria === filtro)
-
-      // console.log(gastosfiltrados)
       setGastosFiltrados(gastosfiltrados)
 
     }
@@ -113,15 +111,17 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
-            <Filtros 
-            filtro={filtro}
-            setFiltro={setFiltro}
-            
+            <Filtros
+              filtro={filtro}
+              setFiltro={setFiltro}
+
             />
             < ListadoGastos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
               eliminarGastos={eliminarGastos}
+              filtro={filtro}
+              gastosFiltrados={gastosFiltrados}
             />
           </main>
           <div className="nuevo-gasto">

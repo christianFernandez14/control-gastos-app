@@ -13,7 +13,7 @@ const Filtros = ({filtro, setFiltro}) => {
             id="filtro"
             onChange={e => setFiltro(e.target.value)}            
             >
-            <option value="">- seleccione -</option>
+            <option value="">- Todas las Categorias -</option>
             {arrayCategorias.map(categoria => (
               <option
                 key={categoria}

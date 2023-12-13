@@ -262,6 +262,7 @@ main {
 .listado-gastos h2 {
     color: var(--gris-oscuro);
     font-weight: 900;
+    margin-bottom: 3rem;
 }
 .no-gastos {
     text-align: center;
