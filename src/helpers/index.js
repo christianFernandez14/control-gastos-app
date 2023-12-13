@@ -21,3 +21,13 @@ export const formatearCantidad = cantidad => {
     currency: 'USD'
   })
 }
+
+// Para los select de las categorias
+export const arrayCategorias = [
+  'ahorro',
+  'comida',
+  'casa',
+  'gastos',
+  'oscio',
+  'salud',
+  'suscripciones']
